@@ -22,6 +22,7 @@ type
     Button16: TButton;
     Button17: TButton;
     Button18: TButton;
+    Button19: TButton;
     Button2: TButton;
     Button20: TButton;
     Button21: TButton;
@@ -36,8 +37,8 @@ type
     Button9: TButton;
     Edit1: TEdit;
     Label1: TLabel;
-    procedure Button10Click(Sender: TObject);
-    procedure Button11Click(Sender: TObject);
+    procedure Button19Click(Sender: TObject);
+    procedure ButtonClick(Sender: TObject);
     procedure Button12Click(Sender: TObject);
     procedure Button13Click(Sender: TObject);
     procedure Button14Click(Sender: TObject);
@@ -45,19 +46,10 @@ type
     procedure Button16Click(Sender: TObject);
     procedure Button17Click(Sender: TObject);
     procedure Button18Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure Button20Click(Sender: TObject);
     procedure Button21Click(Sender: TObject);
     procedure Button22Click(Sender: TObject);
     procedure Button23Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure Button5Click(Sender: TObject);
-    procedure Button6Click(Sender: TObject);
-    procedure Button7Click(Sender: TObject);
-    procedure Button8Click(Sender: TObject);
-    procedure Button9Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
 
@@ -79,41 +71,6 @@ implementation
 {$R *.lfm}
 
 { TForm1 }
-
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '8';
-end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '4';
-end;
-
-procedure TForm1.Button4Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '5';
-end;
-
-procedure TForm1.Button5Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '6';
-end;
-
-procedure TForm1.Button6Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '1';
-end;
-
-procedure TForm1.Button7Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '2';
-end;
-
-procedure TForm1.Button11Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + ',';
-end;
 
 procedure TForm1.Button12Click(Sender: TObject);
 begin
@@ -180,12 +137,7 @@ end;
 
 procedure TForm1.Button18Click(Sender: TObject);
 begin
-  Edit1.Text := '';
-end;
-
-procedure TForm1.Button1Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '7';
+  Edit1.Clear;
 end;
 
 procedure TForm1.Button20Click(Sender: TObject);
@@ -226,19 +178,19 @@ begin
   secondNumberStr := '';
 end;
 
-procedure TForm1.Button10Click(Sender: TObject);
+procedure TForm1.ButtonClick(Sender: TObject);
 begin
-  Edit1.Text := Edit1.Text + '3';
+  Edit1.Text := Edit1.Text + (Sender as TButton).Caption;
 end;
 
-procedure TForm1.Button8Click(Sender: TObject);
+procedure TForm1.Button19Click(Sender: TObject);
+var
+  s: string;
 begin
-  Edit1.Text := Edit1.Text + '9';
-end;
-
-procedure TForm1.Button9Click(Sender: TObject);
-begin
-  Edit1.Text := Edit1.Text + '0';
+  s := Edit1.Text;
+  if s <> '' then
+    Delete(s, Length(s), 1);
+  Edit1.Text := s;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
